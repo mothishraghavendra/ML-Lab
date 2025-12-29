@@ -1,21 +1,23 @@
 import csv
 x = []
-with open("data.csv", "r") as file:
+with open("playtennis.csv", "r") as file:
     reader = csv.reader(file)
-    header = next(reader)   # skip header
+    header = next(reader)   
 
     for row in reader:
         x.append(row)
-y = [0,0,1]
-# 0 indicate yes and 1 incdicate no
+
+attrib = [row[:-1] for row in x]
+y = [row[-1] for row in x]
+
 h = None
-for i in range(len(x)):
-    if y[i] == 0:
+for i in range(len(attrib)):
+    if y[i] == 'Yes':
         if h is None:
-            h = list(x[i])
+            h = list(attrib[i])
         else:
-            for j in range(len(x[i])):
-                if h[j] != x[i][j]:
+            for j in range(len(attrib[i])):
+                if h[j] != attrib[i][j]:
                     h[j] = '?'
 
 print("Final Hypothesis = ",h)
