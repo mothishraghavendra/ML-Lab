@@ -1,6 +1,6 @@
 import csv
 x = []
-with open("playtennis.csv", "r") as file:
+with open("car.csv", "r") as file:
     reader = csv.reader(file)
     header = next(reader)   
 
